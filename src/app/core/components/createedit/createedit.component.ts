@@ -17,11 +17,17 @@ export class CreateeditComponent implements OnInit {
   constructor(
     private personsService: PersonsService,
     private route: Router,
-    private cepService: CepService
+    private cepService: CepService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.selectedPerson = this.personsService.getDefaultPerson();
+    var routeId: string = "";
+    this.activatedRoute.params.subscribe((params) => (routeId = params["id"]));
+    this.selectedPerson =
+      routeId == ""
+        ? this.personsService.getDefaultPerson()
+        : this.personsService.getPersonById(routeId);
     this.loading = false;
   }
 
