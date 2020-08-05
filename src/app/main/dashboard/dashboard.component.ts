@@ -24,14 +24,10 @@ export class DashboardComponent implements OnInit {
   constructor(private personsService: PersonsService) {}
 
   ngOnInit() {
-    const persons = this.personsService.getAllPersons();
-
-    if (!persons || !persons.length)
-      this.personsService.populateTable();
     this.persons = this.personsService.getAllPersons();
   }
 
-  deletePerson(person: Person) {
-    this.persons = this.personsService.deletePersonById(person.id);
+  deletePerson(personId: string) {
+    this.persons = this.personsService.deletePersonById(personId);
   }
 }

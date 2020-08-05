@@ -56,29 +56,62 @@ export class PersonsService {
       },
     ];
 
-    localStorage.setItem("persons", JSON.stringify(persons));
+    this.savePersonsInLocalStorage(persons);
+  }
+
+  public getDefaultPerson(): Person {
+    const defaultPerson = {
+      id: uuidv4(),
+      name: "",
+      cep: "",
+      city: "",
+      cpf: "",
+      email: "",
+      phone: "",
+      state: "",
+      street: "",
+    };
+
+    return defaultPerson;
   }
 
   public getAllPersons() {
     const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
-    
+
     return persons;
   }
 
   public getPersonById(personId: string): Person {
-    const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
+    const persons = this.getAllPersons();
     const filteredPerson = persons.filter((person) => person.id == personId)[0];
 
     return filteredPerson;
   }
 
   public deletePersonById(personId: string): Person[] {
-    const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
+    const persons = this.getAllPersons();
     const filteredPerson = persons.filter((person) => person.id != personId);
 
-    localStorage.removeItem("persons");
-    localStorage.setItem("persons", JSON.stringify(filteredPerson));
+    this.savePersonsInLocalStorage(filteredPerson);
 
     return filteredPerson;
+  }
+
+  public savePerson(person: Person) {
+    const allPersons = this.getAllPersons();
+    const personIndex = allPersons.findIndex(
+      (personTmp) => personTmp.id == person.id
+    );
+
+    if (personIndex > -1) allPersons[personIndex] = person;
+
+    const persons = personIndex == -1 ? [...allPersons, person] : allPersons;
+
+    this.savePersonsInLocalStorage(persons);
+  }
+
+  private savePersonsInLocalStorage(persons: Person[]) {
+    localStorage.removeItem("persons");
+    localStorage.setItem("persons", JSON.stringify(persons));
   }
 }

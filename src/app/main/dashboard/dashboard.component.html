@@ -38,7 +38,7 @@
     <th mat-header-cell *matHeaderCellDef>Ações</th>
     <td mat-cell *matCellDef="let person">
       <a class="action" [routerLink]="['/edit', person.id]">Editar</a>
-      <button class="action" type="button" (click)="deletePerson(person)">
+      <button class="action" type="button" (click)="deletePerson(person.id)">
         Remover
       </button>
     </td>

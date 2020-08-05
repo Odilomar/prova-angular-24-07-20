@@ -14,23 +14,3 @@ export class AppComponent {
     this.personsService.populateTable();
   }
 }
-
-function save(person) {
-  var persons = JSON.parse(localStorage.getItem("persons"));
-  var index = persons.findIndex(
-    (foundPerson) => Number(foundPerson.cpf) == Number(person.cpf)
-  );
-  if (index == -1) index = persons.length;
-  persons[index] = person;
-  localStorage.setItem("persons", JSON.stringify(persons));
-}
-
-function remove(person) {
-  var persons = JSON.parse(localStorage.getItem("persons"));
-  var cpf = Number(person.cpf);
-  var index = persons.findIndex(
-    (foundPerson) => foundPerson.cpf == String(cpf)
-  );
-  persons.splice(index, 1);
-  localStorage.setItem("persons", JSON.stringify(persons));
-}
