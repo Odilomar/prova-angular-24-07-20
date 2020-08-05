@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Person } from '../interfaces/person.interface';
+import { Injectable } from "@angular/core";
+import { Person } from "../interfaces/person.interface";
 import { v4 as uuidv4 } from "uuid";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PersonsService {
-
-  constructor() { }
+  constructor() {}
 
   public populateTable() {
     const persons: Person[] = [
@@ -60,7 +59,26 @@ export class PersonsService {
     localStorage.setItem("persons", JSON.stringify(persons));
   }
 
-  public get() {
-    return localStorage.getItem("persons");
+  public getAllPersons() {
+    const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
+    
+    return persons;
+  }
+
+  public getPersonById(personId: string): Person {
+    const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
+    const filteredPerson = persons.filter((person) => person.id == personId)[0];
+
+    return filteredPerson;
+  }
+
+  public deletePersonById(personId: string): Person[] {
+    const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
+    const filteredPerson = persons.filter((person) => person.id != personId);
+
+    localStorage.removeItem("persons");
+    localStorage.setItem("persons", JSON.stringify(filteredPerson));
+
+    return filteredPerson;
   }
 }

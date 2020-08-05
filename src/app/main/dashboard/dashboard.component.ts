@@ -24,20 +24,14 @@ export class DashboardComponent implements OnInit {
   constructor(private personsService: PersonsService) {}
 
   ngOnInit() {
-    const persons = this.personsService.get();
+    const persons = this.personsService.getAllPersons();
 
-    if (!persons || !JSON.parse(persons).length)
+    if (!persons || !persons.length)
       this.personsService.populateTable();
-    this.persons = JSON.parse(this.personsService.get());
+    this.persons = this.personsService.getAllPersons();
   }
 
   deletePerson(person: Person) {
-    const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
-    const filteredPersons = persons.filter(
-      (personTmp) => personTmp.id != person.id
-    );
-
-    localStorage.setItem("persons", JSON.stringify(filteredPersons));
-    this.persons = filteredPersons;
+    this.persons = this.personsService.deletePersonById(person.id);
   }
 }
