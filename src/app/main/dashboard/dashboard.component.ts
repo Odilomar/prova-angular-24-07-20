@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { CepService } from "src/app/core/services/cep.service";
 import { PersonsService } from "src/app/core/services/persons.service";
 import { Person } from "src/app/core/interfaces/person.interface";
 
@@ -21,33 +20,21 @@ export class DashboardComponent implements OnInit {
     "street",
     "actions",
   ];
-  public selectedPerson;
 
-  constructor(
-    private cep: CepService,
-    private personsService: PersonsService
-  ) {}
+  constructor(private personsService: PersonsService) {}
 
   ngOnInit() {
     const persons = this.personsService.get();
 
     if (!persons || !JSON.parse(persons).length)
       this.personsService.populateTable();
-    this.persons = JSON.parse(persons);
-  }
-
-  addPerson() {
-    this.selectedPerson = {};
-  }
-
-  editPerson(person) {
-    this.selectedPerson = { ...person };
+    this.persons = JSON.parse(this.personsService.get());
   }
 
   deletePerson(person: Person) {
     const persons = JSON.parse(localStorage.getItem("persons")) as Person[];
     const filteredPersons = persons.filter(
-      (personTmp) => personTmp.cpf != person.cpf
+      (personTmp) => personTmp.id != person.id
     );
 
     localStorage.setItem("persons", JSON.stringify(filteredPersons));

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Person } from '../interfaces/person.interface';
+import { v4 as uuidv4 } from "uuid";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class PersonsService {
   public populateTable() {
     const persons: Person[] = [
       {
+        id: uuidv4(),
         name: "Maria Flores",
         cpf: "83321492075",
         phone: "1533283928",
@@ -21,6 +23,7 @@ export class PersonsService {
         street: "Rua Arnaldo Aleixo (Conjunto Canaã)",
       },
       {
+        id: uuidv4(),
         name: "João Carlos",
         cpf: "31213393035",
         phone: "1532841040",
@@ -31,6 +34,7 @@ export class PersonsService {
         street: "Rua Rodolfho José Rospide da Motta",
       },
       {
+        id: uuidv4(),
         name: "Stephanie Dias",
         cpf: "02085196020",
         phone: "1533294040",
@@ -41,6 +45,7 @@ export class PersonsService {
         street: "Rua Mario Bastos Filho",
       },
       {
+        id: uuidv4(),
         name: "Mirtes Souza",
         cpf: "33764389001",
         phone: "1530178756",
