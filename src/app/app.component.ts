@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CepService } from './cep.service';
+import { CepService } from './core/services/cep.service';
 
 @Component({
 	selector: 'app-root',
