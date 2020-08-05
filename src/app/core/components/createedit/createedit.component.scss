@@ -1,21 +1,35 @@
 .form {
-	margin-left: 10vw;
-	width: 80vw;
-    border: 1px solid grey;
-    margin-top: 50px;
-	padding: 16px;
+  margin-left: 10vw;
+  width: 80vw;
+  border: 1px solid grey;
+  margin-top: 50px;
+  padding: 16px;
 }
 
 mat-form-field {
-	width: 100%;
+  width: 100%;
 }
 
 mat-form-field.readonly {
-	color: grey;
+  color: grey;
 }
 
 #buttons {
-	margin-top: 16px;
-	display: flex;
-	justify-content: space-around;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.loading {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(212, 212, 212, 0.7);
+  z-index: 2;
 }
