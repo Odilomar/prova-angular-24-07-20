@@ -50,7 +50,9 @@ export class CreateeditComponent implements OnInit {
   }
 
   public changeCep(event) {
-    const cep = (event.target.value as string).replace("-", "").replace('_', "");
+    const cep = (event.target.value as string)
+      .replace("-", "")
+      .replace("_", "");
 
     if (cep.length == 8) {
       this.loading = true;
@@ -104,22 +106,36 @@ export class CreateeditComponent implements OnInit {
 
   private validateForm(): boolean {
     if (this.selectedPerson.name == "") {
-      alert("Campo de nome não informado. Informe-o e tente novamente!");
+      alert("Campo de Nome não informado. Informe-o e tente novamente!");
       return false;
     }
 
-    if (this.selectedPerson.cpf == "") {
-      alert("Campo de nome não informado. Informe-o e tente novamente!");
+    if (
+      this.selectedPerson.cpf == "" ||
+      this.selectedPerson.cpf
+        .replace("_", "")
+        .replace(".", "")
+        .replace("-", "") == ""
+    ) {
+      alert("Campo de CPF não informado. Informe-o e tente novamente!");
       return false;
     }
 
     if (!isCPFValid(this.selectedPerson.cpf)) {
-      alert("Campo de cpf inválido. Verifique-o e tente novamente!");
+      alert("Campo de CPF inválido. Verifique-o e tente novamente!");
       return false;
     }
 
-    if (this.selectedPerson.phone == "") {
-      alert("Campo de telefone não informado. Informe-o e tente novamente!");
+    if (
+      this.selectedPerson.phone == "" ||
+      this.selectedPerson.phone
+        .replace("(", "")
+        .replace("_", "")
+        .replace(")", "")
+        .replace(" ", "")
+        .replace("-", "") == ""
+    ) {
+      alert("Campo de Telefone não informado. Informe-o e tente novamente!");
       return false;
     }
 
@@ -129,7 +145,7 @@ export class CreateeditComponent implements OnInit {
     }
 
     if (this.selectedPerson.email == "") {
-      alert("Campo de email não informado. Informe-o e tente novamente!");
+      alert("Campo de Email não informado. Informe-o e tente novamente!");
       return false;
     }
 
@@ -138,8 +154,11 @@ export class CreateeditComponent implements OnInit {
       return false;
     }
 
-    if (this.selectedPerson.cep == "") {
-      alert("Campo de cep não informado. Informe-o e tente novamente!");
+    if (
+      this.selectedPerson.cep == "" ||
+      this.selectedPerson.cep.replace("_", "").replace("-", "") == ""
+    ) {
+      alert("Campo de Cep não informado. Informe-o e tente novamente!");
       return false;
     }
 
@@ -149,17 +168,17 @@ export class CreateeditComponent implements OnInit {
     }
 
     if (this.selectedPerson.state == "") {
-      alert("Campo de state não informado. Informe-o e tente novamente!");
+      alert("Campo de Estado não informado. Informe-o e tente novamente!");
       return false;
     }
 
     if (this.selectedPerson.city == "") {
-      alert("Campo de city não informado. Informe-o e tente novamente!");
+      alert("Campo de Cidade não informado. Informe-o e tente novamente!");
       return false;
     }
 
     if (this.selectedPerson.street == "") {
-      alert("Campo de street não informado. Informe-o e tente novamente!");
+      alert("Campo de Rua não informado. Informe-o e tente novamente!");
       return false;
     }
 

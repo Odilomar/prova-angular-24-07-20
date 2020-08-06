@@ -3,7 +3,7 @@
 TODO:
 * Refinar a validação dos campos; - OK
 * Colocar mascaras no CPF, Telefone, Email e CEP; - OK
-* Criar uma interface para o CEP;
+* Criar uma interface para o CEP; - OK
 * Criar interface de Erro;
 * Criar constante de Erros;
 * Usar o toastr para enviar msg;
