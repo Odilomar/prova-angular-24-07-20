@@ -114,7 +114,7 @@ export class CreateeditComponent implements OnInit {
       return false;
     }
 
-    if (this.selectedPerson.phone.length < 11) {
+    if (this.selectedPerson.phone.length < 10) {
       alert("Telefone inválido. Verifique-o e tente novamente!");
       return false;
     }
