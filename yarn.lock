@@ -111,10 +111,10 @@
     "@angular-devkit/core" "8.3.29"
     rxjs "6.4.0"
 
-"@angular/animations@~8.2.14":
-  version "8.2.14"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-8.2.14.tgz#76736b21e56165e6ca4925fb69605bdcc56aba7d"
-  integrity sha512-3Vc9TnNpKdtvKIXcWDFINSsnwgEMiDmLzjceWg1iYKwpeZGQahUXPoesLwQazBMmxJzQiA4HOMj0TTXKZ+Jzkg==
+"@angular/animations@6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-6.1.4.tgz#ca17acd62b9328404671a569fbf3065472527174"
+  integrity sha512-R+akCyIneyqJ5wAf9VaymvxbxM4Iw3YsUdylO9rrr9wAUhzmzWhCSGK9bncwL4+d5rbd0n1u+8A8Gm0dZe1P1A==
   dependencies:
     tslib "^1.9.0"
 
@@ -5275,6 +5275,13 @@ ngx-mask@^8.0.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/ngx-mask/-/ngx-mask-8.2.0.tgz#1eac06d96d09fc62dd6f4b3f285f7fca50838d08"
   integrity sha512-eWEnaHnLz3x/OuI8HVrmGciR2U84c/GoNjyUwCHxhskHevMuCPJRnbHag19ggQJKaTjmzpP+LyPHslOqPgbQ5w==
+  dependencies:
+    tslib "^1.9.0"
+
+ngx-toastr@10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-10.1.0.tgz#df6e578ebac1348e68d24b11d243653a401d17e6"
+  integrity sha512-LXGL8jKIm0SGklkXytNKbR6VrF94all35SaUfgd1gOUzgllTW2ldqORDZlgIaiMB3Dcybaald8p3boEHvfjEIQ==
   dependencies:
     tslib "^1.9.0"
 

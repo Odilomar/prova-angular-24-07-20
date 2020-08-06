@@ -11,6 +11,7 @@ import { Person } from "../../interfaces/person.interface";
 import { Mask } from "../../constants/mask.constants";
 import { CepInterface } from "../../interfaces/cep.interface";
 import { CepErrorInterface } from "../../interfaces/cep.error.interface";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-createedit",
@@ -29,7 +30,8 @@ export class CreateeditComponent implements OnInit {
     private personsService: PersonsService,
     private route: Router,
     private cepService: CepService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -61,7 +63,7 @@ export class CreateeditComponent implements OnInit {
         .getCep(cep)
         .then((returnedCEP: any) => {
           if ((returnedCEP as CepErrorInterface).erro) {
-            alert("Cep não encontrado");
+            this.toastr.error("Verifique seu CEP e tente novamente!", "CEP não encontrado!");
           } else {
             const {
               cep,
