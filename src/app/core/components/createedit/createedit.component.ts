@@ -52,6 +52,7 @@ export class CreateeditComponent implements OnInit {
 
     if (cep.length == 8) {
       this.loading = true;
+      this.clearAddress();
       this.cepService
         .getCep(cep)
         .then((apiResponse: any) => {
@@ -86,6 +87,12 @@ export class CreateeditComponent implements OnInit {
     this.route.navigate(["/dashboard"]);
   }
 
+  private clearAddress() {
+    this.selectedPerson.state = "";
+    this.selectedPerson.city = "";
+    this.selectedPerson.street = "";
+  }
+
   private validateForm(): boolean {
     if (this.selectedPerson.name == "") {
       alert("Campo de nome não informado. Informe-o e tente novamente!");
@@ -101,8 +108,6 @@ export class CreateeditComponent implements OnInit {
       alert("Campo de telefone não informado. Informe-o e tente novamente!");
       return false;
     }
-
-    console.log(validate(this.selectedPerson.email));
 
     if (
       this.selectedPerson.email == "" ||
