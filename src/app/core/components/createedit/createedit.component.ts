@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Person } from "../../interfaces/person.interface";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { isValid } from "cpf";
@@ -7,6 +6,9 @@ import { validate } from "email-validator";
 
 import { PersonsService } from "../../services/persons.service";
 import { CepService } from "../../services/cep.service";
+
+import { Person } from "../../interfaces/person.interface";
+import { Mask } from "../../constants/mask.constants";
 
 @Component({
   selector: "app-createedit",
@@ -17,6 +19,10 @@ export class CreateeditComponent implements OnInit {
   public selectedPerson: Person;
   public loading: boolean;
 
+  public cpfMask: string;
+  public phoneMask: string;
+  public cepMask: string;
+
   constructor(
     private personsService: PersonsService,
     private route: Router,
@@ -25,7 +31,14 @@ export class CreateeditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const { cpf, cep, phone } = Mask;
+
+    this.cpfMask = cpf;
+    this.phoneMask = phone;
+    this.cepMask = cep;
+
     var routeId: string = "";
+
     this.activatedRoute.params.subscribe((params) => (routeId = params["id"]));
     this.selectedPerson =
       routeId == "" || !routeId
@@ -35,9 +48,7 @@ export class CreateeditComponent implements OnInit {
   }
 
   public changeCep(event) {
-    var cep:string = event.target.value;
-    
-    if(cep.length > 8) event.target.value = cep.substring(0, 7);
+    var cep = (event.target.value as string).replace("-", "");
 
     if (cep.length == 8) {
       this.loading = true;
@@ -93,7 +104,10 @@ export class CreateeditComponent implements OnInit {
 
     console.log(validate(this.selectedPerson.email));
 
-    if (this.selectedPerson.email == "" || !validate(this.selectedPerson.email)) {
+    if (
+      this.selectedPerson.email == "" ||
+      !validate(this.selectedPerson.email)
+    ) {
       alert("Campo de email não informado. Informe-o e tente novamente!");
       return false;
     }

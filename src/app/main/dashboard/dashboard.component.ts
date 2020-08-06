@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+
 import { PersonsService } from "src/app/core/services/persons.service";
 import { Person } from "src/app/core/interfaces/person.interface";
+import { Mask } from "../../core/constants/mask.constants";
 
 @Component({
   selector: "app-dashboard",
@@ -8,6 +10,10 @@ import { Person } from "src/app/core/interfaces/person.interface";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
+  public cpfMask: string;
+  public phoneMask: string;
+  public cepMask: string;
+
   public persons: Person[];
   public columns = [
     "name",
@@ -24,6 +30,12 @@ export class DashboardComponent implements OnInit {
   constructor(private personsService: PersonsService) {}
 
   ngOnInit() {
+    const { cpf, phone, cep } = Mask;
+
+    this.cpfMask = cpf;
+    this.phoneMask = phone;
+    this.cepMask = cep;
+
     this.persons = this.personsService.getAllPersons();
   }
 

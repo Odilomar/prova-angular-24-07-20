@@ -5,8 +5,20 @@ import { CoreRoutingModule } from "./core-routing.module";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule } from "@angular/forms";
 
+import { NgxMaskModule, IConfig } from "ngx-mask";
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
 @NgModule({
   declarations: [CreateeditComponent],
-  imports: [CommonModule, CoreRoutingModule, MatInputModule, FormsModule],
+  imports: [
+    NgxMaskModule.forRoot(maskConfig),
+    CommonModule,
+    CoreRoutingModule,
+    MatInputModule,
+    FormsModule,
+  ],
 })
 export class CoreModule {}

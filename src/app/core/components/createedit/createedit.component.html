@@ -9,11 +9,10 @@
       <mat-label>CPF</mat-label>
       <input
         type="text"
-        maxlength="11"
+        [mask]="cpfMask"
         matInput
         [(ngModel)]="selectedPerson.cpf"
         name="cpf"
-        onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
         required
       />
     </mat-form-field>
@@ -21,11 +20,10 @@
       <mat-label>Telefone</mat-label>
       <input
         type="text"
-        maxlength="11"
+        [mask]="phoneMask"
         matInput
         [(ngModel)]="selectedPerson.phone"
         name="phone"
-        onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
         required
       />
     </mat-form-field>
@@ -42,7 +40,8 @@
     <mat-form-field>
       <mat-label>CEP</mat-label>
       <input
-        type="number"
+        type="text"
+        [mask]="cepMask"
         matInput
         [(ngModel)]="selectedPerson.cep"
         name="cep"
