@@ -9,6 +9,8 @@ import { CepService } from "../../services/cep.service";
 
 import { Person } from "../../interfaces/person.interface";
 import { Mask } from "../../constants/mask.constants";
+import { CepInterface } from "../../interfaces/cep.interface";
+import { CepErrorInterface } from "../../interfaces/cep.error.interface";
 
 @Component({
   selector: "app-createedit",
@@ -48,23 +50,30 @@ export class CreateeditComponent implements OnInit {
   }
 
   public changeCep(event) {
-    var cep = (event.target.value as string).replace("-", "");
+    const cep = (event.target.value as string).replace("-", "").replace('_', "");
 
     if (cep.length == 8) {
       this.loading = true;
       this.clearAddress();
       this.cepService
         .getCep(cep)
-        .then((apiResponse: any) => {
-          if (apiResponse.erro) {
+        .then((returnedCEP: any) => {
+          if ((returnedCEP as CepErrorInterface).erro) {
             alert("Cep não encontrado");
           } else {
+            const {
+              cep,
+              uf,
+              localidade,
+              logradouro,
+            } = returnedCEP as CepInterface;
+
             this.selectedPerson = {
               ...this.selectedPerson,
-              cep: apiResponse.cep.replace("-", ""),
-              state: apiResponse.uf,
-              city: apiResponse.localidade,
-              street: apiResponse.logradouro,
+              cep: cep.replace("-", ""),
+              state: uf,
+              city: localidade,
+              street: logradouro,
             };
           }
         })

@@ -4,8 +4,10 @@ TODO:
 * Refinar a validação dos campos; - OK
 * Colocar mascaras no CPF, Telefone, Email e CEP; - OK
 * Criar uma interface para o CEP;
-* Criar os testes;
+* Criar interface de Erro;
+* Criar constante de Erros;
 * Usar o toastr para enviar msg;
+* Criar os testes;
 * Melhorar layout - Mobile First;
 
 Trata-se de um teste bem simples, onde temos um CRUD de usuários e queremos vê-lo funcional, organizado e com testes
