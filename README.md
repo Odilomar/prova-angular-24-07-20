@@ -1,8 +1,8 @@
 # Prova de Angular
 
 TODO:
-* Refinar a validação dos campos;
-* Colocar mascaras no CPF, Telefone, Email e CEP;
+* Refinar a validação dos campos; - OK
+* Colocar mascaras no CPF, Telefone, Email e CEP; - OK
 * Criar uma interface para o CEP;
 * Criar os testes;
 * Usar o toastr para enviar msg;

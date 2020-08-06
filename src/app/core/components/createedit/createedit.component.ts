@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { isValid } from "cpf";
-import { validate } from "email-validator";
+import { isValid as isCPFValid } from "cpf";
+import { validate as isEmailValid } from "email-validator";
 
 import { PersonsService } from "../../services/persons.service";
 import { CepService } from "../../services/cep.service";
@@ -99,7 +99,12 @@ export class CreateeditComponent implements OnInit {
       return false;
     }
 
-    if (this.selectedPerson.cpf == "" || !isValid(this.selectedPerson.cpf)) {
+    if (this.selectedPerson.cpf == "") {
+      alert("Campo de nome não informado. Informe-o e tente novamente!");
+      return false;
+    }
+
+    if (!isCPFValid(this.selectedPerson.cpf)) {
       alert("Campo de cpf inválido. Verifique-o e tente novamente!");
       return false;
     }
@@ -109,16 +114,28 @@ export class CreateeditComponent implements OnInit {
       return false;
     }
 
-    if (
-      this.selectedPerson.email == "" ||
-      !validate(this.selectedPerson.email)
-    ) {
+    if (this.selectedPerson.phone.length < 11) {
+      alert("Telefone inválido. Verifique-o e tente novamente!");
+      return false;
+    }
+
+    if (this.selectedPerson.email == "") {
       alert("Campo de email não informado. Informe-o e tente novamente!");
+      return false;
+    }
+
+    if (!isEmailValid(this.selectedPerson.email)) {
+      alert("Email inválido. Verifique-o e tente novamente!");
       return false;
     }
 
     if (this.selectedPerson.cep == "") {
       alert("Campo de cep não informado. Informe-o e tente novamente!");
+      return false;
+    }
+
+    if (this.selectedPerson.cep.length < 8) {
+      alert("Cep inválido. Verifique-o e tente novamente!");
       return false;
     }
 

@@ -10,6 +10,7 @@
       <input
         type="text"
         [mask]="cpfMask"
+        [showMaskTyped]="true"
         matInput
         [(ngModel)]="selectedPerson.cpf"
         name="cpf"
@@ -21,6 +22,7 @@
       <input
         type="text"
         [mask]="phoneMask"
+        [showMaskTyped]="true"
         matInput
         [(ngModel)]="selectedPerson.phone"
         name="phone"
@@ -42,6 +44,7 @@
       <input
         type="text"
         [mask]="cepMask"
+        [showMaskTyped]="true"
         matInput
         [(ngModel)]="selectedPerson.cep"
         name="cep"
