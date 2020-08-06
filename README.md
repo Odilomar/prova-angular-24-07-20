@@ -1,5 +1,13 @@
 # Prova de Angular
 
+TODO:
+* Refinar a validação dos campos;
+* Colocar mascaras no CPF, Telefone, Email e CEP;
+* Criar uma interface para o CEP;
+* Criar os testes;
+* Usar o toastr para enviar msg;
+* Melhorar layout - Mobile First;
+
 Trata-se de um teste bem simples, onde temos um CRUD de usuários e queremos vê-lo funcional, organizado e com testes
 
 ## O que será avaliado?

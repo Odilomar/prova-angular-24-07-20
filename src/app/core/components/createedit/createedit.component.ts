@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Person } from "../../interfaces/person.interface";
-import { v4 as uuidv4 } from "uuid";
-import { PersonsService } from "../../services/persons.service";
 import { ActivatedRoute, Router } from "@angular/router";
+
+import { isValid } from "cpf";
+import { validate } from "email-validator";
+
+import { PersonsService } from "../../services/persons.service";
 import { CepService } from "../../services/cep.service";
 
 @Component({
@@ -25,14 +28,17 @@ export class CreateeditComponent implements OnInit {
     var routeId: string = "";
     this.activatedRoute.params.subscribe((params) => (routeId = params["id"]));
     this.selectedPerson =
-      routeId == ""
+      routeId == "" || !routeId
         ? this.personsService.getDefaultPerson()
         : this.personsService.getPersonById(routeId);
     this.loading = false;
   }
 
   public changeCep(event) {
-    var cep = event.target.value;
+    var cep:string = event.target.value;
+    
+    if(cep.length > 8) event.target.value = cep.substring(0, 7);
+
     if (cep.length == 8) {
       this.loading = true;
       this.cepService
@@ -75,8 +81,8 @@ export class CreateeditComponent implements OnInit {
       return false;
     }
 
-    if (this.selectedPerson.cpf == "") {
-      alert("Campo de cpf não informado. Informe-o e tente novamente!");
+    if (this.selectedPerson.cpf == "" || !isValid(this.selectedPerson.cpf)) {
+      alert("Campo de cpf inválido. Verifique-o e tente novamente!");
       return false;
     }
 
@@ -85,13 +91,30 @@ export class CreateeditComponent implements OnInit {
       return false;
     }
 
-    if (this.selectedPerson.email == "") {
+    console.log(validate(this.selectedPerson.email));
+
+    if (this.selectedPerson.email == "" || !validate(this.selectedPerson.email)) {
       alert("Campo de email não informado. Informe-o e tente novamente!");
       return false;
     }
 
     if (this.selectedPerson.cep == "") {
       alert("Campo de cep não informado. Informe-o e tente novamente!");
+      return false;
+    }
+
+    if (this.selectedPerson.state == "") {
+      alert("Campo de state não informado. Informe-o e tente novamente!");
+      return false;
+    }
+
+    if (this.selectedPerson.city == "") {
+      alert("Campo de city não informado. Informe-o e tente novamente!");
+      return false;
+    }
+
+    if (this.selectedPerson.street == "") {
+      alert("Campo de street não informado. Informe-o e tente novamente!");
       return false;
     }
 

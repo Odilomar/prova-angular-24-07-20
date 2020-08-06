@@ -21,7 +21,7 @@
       <mat-label>Telefone</mat-label>
       <input
         type="text"
-        pattern="[0-9]*"
+        maxlength="11"
         matInput
         [(ngModel)]="selectedPerson.phone"
         name="phone"
@@ -43,7 +43,6 @@
       <mat-label>CEP</mat-label>
       <input
         type="number"
-        pattern="[0-9]*"
         matInput
         [(ngModel)]="selectedPerson.cep"
         name="cep"
