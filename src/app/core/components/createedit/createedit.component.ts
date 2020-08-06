@@ -8,10 +8,14 @@ import { PersonsService } from "../../services/persons.service";
 import { CepService } from "../../services/cep.service";
 
 import { Person } from "../../interfaces/person.interface";
-import { Mask } from "../../constants/mask.constants";
+import { MASK } from "../../constants/mask.constants";
 import { CepInterface } from "../../interfaces/cep.interface";
 import { CepErrorInterface } from "../../interfaces/cep.error.interface";
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from "ngx-toastr";
+
+import { CEP_NOT_FOUND, CEP_FOUND, CEP_API_ERROR, CEP_INVALID, CEP_NOT_INFORMED } from "../../constants/cep.constants";
+import { MessageInterface } from "../../interfaces/message.interface";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: "app-createedit",
@@ -35,7 +39,7 @@ export class CreateeditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const { cpf, cep, phone } = Mask;
+    const { cpf, cep, phone } = MASK;
 
     this.cpfMask = cpf;
     this.phoneMask = phone;
@@ -63,7 +67,7 @@ export class CreateeditComponent implements OnInit {
         .getCep(cep)
         .then((returnedCEP: any) => {
           if ((returnedCEP as CepErrorInterface).erro) {
-            this.toastr.error("Verifique seu CEP e tente novamente!", "CEP não encontrado!");
+            this.showToastr(CEP_NOT_FOUND);
           } else {
             const {
               cep,
@@ -79,11 +83,12 @@ export class CreateeditComponent implements OnInit {
               city: localidade,
               street: logradouro,
             };
+
+            this.showToastr(CEP_FOUND, false);
           }
         })
         .catch((error) => {
-          alert("Erro ao buscar o cep");
-          console.error(error);
+          this.showToastr(CEP_API_ERROR);
         })
         .finally(() => (this.loading = false));
     }
@@ -160,12 +165,12 @@ export class CreateeditComponent implements OnInit {
       this.selectedPerson.cep == "" ||
       this.selectedPerson.cep.replace("_", "").replace("-", "") == ""
     ) {
-      alert("Campo de Cep não informado. Informe-o e tente novamente!");
+      this.showToastr(CEP_NOT_INFORMED);
       return false;
     }
 
     if (this.selectedPerson.cep.length < 8) {
-      alert("Cep inválido. Verifique-o e tente novamente!");
+      this.showToastr(CEP_INVALID);
       return false;
     }
 
@@ -185,5 +190,11 @@ export class CreateeditComponent implements OnInit {
     }
 
     return true;
+  }
+
+  private showToastr(messageValue: MessageInterface, isError: boolean = true) {
+    const { title, message } = messageValue;
+
+    isError ? this.toastr.error(message, title) : this.toastr.success(message);
   }
 }

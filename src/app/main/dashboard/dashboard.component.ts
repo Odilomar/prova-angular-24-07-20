@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { PersonsService } from "src/app/core/services/persons.service";
 import { Person } from "src/app/core/interfaces/person.interface";
-import { Mask } from "../../core/constants/mask.constants";
+import { MASK } from "../../core/constants/mask.constants";
 
 @Component({
   selector: "app-dashboard",
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   constructor(private personsService: PersonsService) {}
 
   ngOnInit() {
-    const { cpf, phone, cep } = Mask;
+    const { cpf, phone, cep } = MASK;
 
     this.cpfMask = cpf;
     this.phoneMask = phone;
