@@ -83,9 +83,16 @@ export class PersonsService {
 
   public getPersonById(personId: string): Person {
     const persons = this.getAllPersons();
-    const filteredPerson = persons.filter((person) => person.id == personId)[0];
+    const person = persons.find((person) => person.id == personId);
 
-    return filteredPerson;
+    return person;
+  }
+
+  public personByIdExistis(personId: string): boolean {
+    const persons = this.getAllPersons();
+    const person = persons.find((person) => person.id == personId);
+
+    return person ? true : false;
   }
 
   public deletePersonById(personId: string): Person[] {

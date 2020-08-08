@@ -13,9 +13,27 @@ import { CepInterface } from "../../interfaces/cep.interface";
 import { CepErrorInterface } from "../../interfaces/cep.error.interface";
 import { ToastrService } from "ngx-toastr";
 
-import { CEP_NOT_FOUND, CEP_FOUND, CEP_API_ERROR, CEP_INVALID, CEP_NOT_INFORMED } from "../../constants/cep.constants";
+import {
+  CEP_NOT_FOUND,
+  CEP_FOUND,
+  CEP_API_ERROR,
+  CEP_INVALID,
+  CEP_NOT_INFORMED,
+  NAME_NOT_FOUND,
+  CPF_NOT_FOUND,
+  CPF_INVALID,
+  PHONE_NOT_FOUND,
+  PHONE_INVALID,
+  EMAIL_NOT_FOUND,
+  EMAIL_INVALID,
+  STATE_NOT_FOUND,
+  CITY_NOT_FOUND,
+  STREET_NOT_FOUND,
+  SAVE_PERSON,
+  EDIT_PERSON,
+} from "../../constants/message.constants";
 import { MessageInterface } from "../../interfaces/message.interface";
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ShowToastrService } from "../../services/showtoastr.service";
 
 @Component({
   selector: "app-createedit",
@@ -35,7 +53,7 @@ export class CreateeditComponent implements OnInit {
     private route: Router,
     private cepService: CepService,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService
+    private showToastrService: ShowToastrService
   ) {}
 
   ngOnInit() {
@@ -67,7 +85,7 @@ export class CreateeditComponent implements OnInit {
         .getCep(cep)
         .then((returnedCEP: any) => {
           if ((returnedCEP as CepErrorInterface).erro) {
-            this.showToastr(CEP_NOT_FOUND);
+            this.showToastrService.showToastr(CEP_NOT_FOUND);
           } else {
             const {
               cep,
@@ -84,11 +102,11 @@ export class CreateeditComponent implements OnInit {
               street: logradouro,
             };
 
-            this.showToastr(CEP_FOUND, false);
+            this.showToastrService.showToastr(CEP_FOUND, false);
           }
         })
         .catch((error) => {
-          this.showToastr(CEP_API_ERROR);
+          this.showToastrService.showToastr(CEP_API_ERROR);
         })
         .finally(() => (this.loading = false));
     }
@@ -96,6 +114,12 @@ export class CreateeditComponent implements OnInit {
 
   public save() {
     if (this.validateForm()) {
+      this.showToastrService.showToastr(
+        this.personsService.personByIdExistis(this.selectedPerson.id)
+          ? EDIT_PERSON
+          : SAVE_PERSON,
+        false
+      );
       this.personsService.savePerson(this.selectedPerson);
       this.returnToDashboard();
     }
@@ -113,7 +137,7 @@ export class CreateeditComponent implements OnInit {
 
   private validateForm(): boolean {
     if (this.selectedPerson.name == "") {
-      alert("Campo de Nome não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(NAME_NOT_FOUND);
       return false;
     }
 
@@ -124,12 +148,12 @@ export class CreateeditComponent implements OnInit {
         .replace(".", "")
         .replace("-", "") == ""
     ) {
-      alert("Campo de CPF não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(CPF_NOT_FOUND);
       return false;
     }
 
     if (!isCPFValid(this.selectedPerson.cpf)) {
-      alert("Campo de CPF inválido. Verifique-o e tente novamente!");
+      this.showToastrService.showToastr(CPF_INVALID);
       return false;
     }
 
@@ -142,22 +166,22 @@ export class CreateeditComponent implements OnInit {
         .replace(" ", "")
         .replace("-", "") == ""
     ) {
-      alert("Campo de Telefone não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(PHONE_NOT_FOUND);
       return false;
     }
 
     if (this.selectedPerson.phone.length < 10) {
-      alert("Telefone inválido. Verifique-o e tente novamente!");
+      this.showToastrService.showToastr(PHONE_INVALID);
       return false;
     }
 
     if (this.selectedPerson.email == "") {
-      alert("Campo de Email não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(EMAIL_NOT_FOUND);
       return false;
     }
 
     if (!isEmailValid(this.selectedPerson.email)) {
-      alert("Email inválido. Verifique-o e tente novamente!");
+      this.showToastrService.showToastr(EMAIL_INVALID);
       return false;
     }
 
@@ -165,36 +189,30 @@ export class CreateeditComponent implements OnInit {
       this.selectedPerson.cep == "" ||
       this.selectedPerson.cep.replace("_", "").replace("-", "") == ""
     ) {
-      this.showToastr(CEP_NOT_INFORMED);
+      this.showToastrService.showToastr(CEP_NOT_INFORMED);
       return false;
     }
 
     if (this.selectedPerson.cep.length < 8) {
-      this.showToastr(CEP_INVALID);
+      this.showToastrService.showToastr(CEP_INVALID);
       return false;
     }
 
     if (this.selectedPerson.state == "") {
-      alert("Campo de Estado não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(STATE_NOT_FOUND);
       return false;
     }
 
     if (this.selectedPerson.city == "") {
-      alert("Campo de Cidade não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(CITY_NOT_FOUND);
       return false;
     }
 
     if (this.selectedPerson.street == "") {
-      alert("Campo de Rua não informado. Informe-o e tente novamente!");
+      this.showToastrService.showToastr(STREET_NOT_FOUND);
       return false;
     }
 
     return true;
-  }
-
-  private showToastr(messageValue: MessageInterface, isError: boolean = true) {
-    const { title, message } = messageValue;
-
-    isError ? this.toastr.error(message, title) : this.toastr.success(message);
   }
 }
