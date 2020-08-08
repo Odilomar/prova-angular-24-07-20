@@ -88,11 +88,10 @@ export class PersonsService {
     return person;
   }
 
-  public personByIdExistis(personId: string): boolean {
-    const persons = this.getAllPersons();
-    const person = persons.find((person) => person.id == personId);
+  public isPersonById(personId: string): boolean {
+    const isPerson = this.getPersonById(personId) ? true : false;
 
-    return person ? true : false;
+    return isPerson;
   }
 
   public deletePersonById(personId: string): Person[] {

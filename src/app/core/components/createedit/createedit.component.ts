@@ -115,7 +115,7 @@ export class CreateeditComponent implements OnInit {
   public save() {
     if (this.validateForm()) {
       this.showToastrService.showToastr(
-        this.personsService.personByIdExistis(this.selectedPerson.id)
+        this.personsService.isPersonById(this.selectedPerson.id)
           ? EDIT_PERSON
           : SAVE_PERSON,
         false

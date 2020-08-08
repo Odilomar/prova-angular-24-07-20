@@ -1,1 +1,12 @@
 @import '~ngx-toastr/toastr';
+
+.container {
+    width: 90%;
+    max-width: 1300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // margin-top: 3rem;
+}

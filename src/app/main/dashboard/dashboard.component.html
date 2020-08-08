@@ -1,46 +1,60 @@
-<a class="add-person" [routerLink]="['/create']">Incluir uma nova pessoa</a>
-<table mat-table [dataSource]="persons">
-  <tr mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr mat-row *matRowDef="let myRowData; columns: columns"></tr>1
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome</th>
-    <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-  </ng-container>
-  <ng-container matColumnDef="cpf">
-    <th mat-header-cell *matHeaderCellDef>CPF</th>
-    <td mat-cell *matCellDef="let person">{{ person.cpf |  mask: cpfMask}}</td>
-  </ng-container>
-  <ng-container matColumnDef="phone">
-    <th mat-header-cell *matHeaderCellDef>Telefone</th>
-    <td mat-cell *matCellDef="let person">{{ person.phone | mask: phoneMask }}</td>
-  </ng-container>
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef>E-mail</th>
-    <td mat-cell *matCellDef="let person">{{ person.email }}</td>
-  </ng-container>
-  <ng-container matColumnDef="cep">
-    <th mat-header-cell *matHeaderCellDef>CEP</th>
-    <td mat-cell *matCellDef="let person">{{ person.cep | mask: cepMask}}</td>
-  </ng-container>
-  <ng-container matColumnDef="state">
-    <th mat-header-cell *matHeaderCellDef>Estado</th>
-    <td mat-cell *matCellDef="let person">{{ person.state }}</td>
-  </ng-container>
-  <ng-container matColumnDef="city">
-    <th mat-header-cell *matHeaderCellDef>Cidade</th>
-    <td mat-cell *matCellDef="let person">{{ person.city }}</td>
-  </ng-container>
-  <ng-container matColumnDef="street">
-    <th mat-header-cell *matHeaderCellDef>Rua</th>
-    <td mat-cell *matCellDef="let person">{{ person.street }}</td>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Ações</th>
-    <td mat-cell *matCellDef="let person">
-      <a class="action" [routerLink]="['/edit', person.id]">Editar</a>
-      <button class="action" type="button" (click)="deletePerson(person.id)">
-        Remover
-      </button>
-    </td>
-  </ng-container>
-</table>
+<div id="rowTitle" class="row">
+  <h1>Listagem de pessoas</h1>
+  <a class="add-person" [routerLink]="['/create']">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </a>
+</div>
+<!-- <div class="row">
+  <table mat-table [dataSource]="persons">
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
+    1
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef>CPF</th>
+      <td mat-cell *matCellDef="let person">
+        {{ person.cpf | mask: cpfMask }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Telefone</th>
+      <td mat-cell *matCellDef="let person">
+        {{ person.phone | mask: phoneMask }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let person">{{ person.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="cep">
+      <th mat-header-cell *matHeaderCellDef>CEP</th>
+      <td mat-cell *matCellDef="let person">
+        {{ person.cep | mask: cepMask }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let person">{{ person.state }}</td>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>Cidade</th>
+      <td mat-cell *matCellDef="let person">{{ person.city }}</td>
+    </ng-container>
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef>Rua</th>
+      <td mat-cell *matCellDef="let person">{{ person.street }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let person">
+        <a class="action" [routerLink]="['/edit', person.id]">Editar</a>
+        <button class="action" type="button" (click)="deletePerson(person.id)">
+          Remover
+        </button>
+      </td>
+    </ng-container>
+  </table>
+</div> -->

@@ -6,12 +6,16 @@ import { MASK } from "../../core/constants/mask.constants";
 import { ShowToastrService } from "src/app/core/services/showtoastr.service";
 import { REMOVE_PERSON } from 'src/app/core/constants/message.constants';
 
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
+  public faPlus = faPlus;
+
   public cpfMask: string;
   public phoneMask: string;
   public cepMask: string;

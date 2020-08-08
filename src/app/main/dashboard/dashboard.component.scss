@@ -1,43 +1,65 @@
 .add-person {
-    position: absolute;
-    top: 28px;
-    right: 10vw;
+  // position: absolute;
+  // top: 28px;
+  // right: 10vw;
 }
 
 table {
-	margin-left: 10vw;
-	width: 80vw;
-	border: 1px solid grey;
-    margin-top: 70px;
+//   margin-left: 10vw;
+  width: 80vw;
+//   border: 1px solid grey;
+  margin-top: 2rem;
 }
 
 mat-form-field {
-	width: 100%;
+  width: 100%;
 }
 
 mat-form-field.readonly {
-	color: grey;
+  color: grey;
 }
 
 #buttons {
-	margin-top: 16px;
-	display: flex;
-	justify-content: space-around;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-around;
 }
 
 td {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 td button {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .action {
-	color: blue;
-	cursor: pointer;
+  color: blue;
+  cursor: pointer;
 }
 
 .action:hover {
-	background-color: aqua;
+  background-color: aqua;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	h1 {
+		font-family: 'Montserrat', 'Roboto', sans-serif;
+		font-weight: 500;
+	}
+}
+
+#rowTitle {
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 1100px){
+	.row h1 {
+		font-size: 1.5rem;
+	}
 }

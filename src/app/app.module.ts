@@ -4,6 +4,7 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { MatTableModule } from "@angular/material/table";
 import { FormsModule } from "@angular/forms";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from "./app.component";
 
@@ -19,6 +20,7 @@ import { ToastrModule } from "ngx-toastr";
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

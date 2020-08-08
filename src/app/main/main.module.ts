@@ -9,6 +9,8 @@ import { NgxMaskModule, IConfig } from "ngx-mask";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { MainRoutingModule } from "./main-routing.module";
 
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
@@ -17,6 +19,7 @@ const maskConfig: Partial<IConfig> = {
   declarations: [DashboardComponent],
   imports: [
     NgxMaskModule.forRoot(maskConfig),
+    FontAwesomeModule,
     CommonModule,
     MatTableModule,
     MatInputModule,

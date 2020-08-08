@@ -4,9 +4,9 @@ TODO:
 * Refinar a validação dos campos; - OK
 * Colocar mascaras no CPF, Telefone, Email e CEP; - OK
 * Criar uma interface para o CEP; - OK
-* Criar interface de Erro;
-* Criar constante de Erros;
-* Usar o toastr para enviar msg;
+* Criar interface de Erro; - OK
+* Criar constante de Erros; - OK
+* Usar o toastr para enviar msg; - OK
 * Criar os testes;
 * Melhorar layout - Mobile First;
 
