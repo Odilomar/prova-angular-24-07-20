@@ -8,14 +8,14 @@ strong {
 }
 
 #btnRemovePerson {
-  background-color: #7952b3;
+  background-color: var(--button-cancel-color);
   label {
     padding-left: 0.5rem;
   }
 }
 
 #btnCloseDialog {
-  background-color: #bc8fff;
+  background-color: var(--button-edit-color);
   label {
     padding-left: 0.5rem;
   }

@@ -31,7 +31,6 @@ mat-form-field.readonly {
 }
 
 .loading {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
   position: absolute;
   top: 0;
   left: 0;
@@ -40,8 +39,9 @@ mat-form-field.readonly {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(212, 212, 212, 0.7);
+  background-color: var(--loading-color);
   z-index: 2;
+  color: white;
 }
 
 .mat-form-field, .mat-input-element {
@@ -64,7 +64,7 @@ mat-form-field.readonly {
   padding: 0.75rem 1.5rem;
   margin-top: 1rem;
   border-radius: 0.25rem;
-  box-shadow: 2.5px 2.5px 2.5px #7952B3;
+  box-shadow: 2.5px 2.5px 2.5px var(--button-cancel-color);
 }
 
 #rowButtons {
@@ -73,11 +73,11 @@ mat-form-field.readonly {
 }
 
 #btnSave {
-  background-color: #40b35a;
+  background-color: var(--button-add-color);
 }
 
 #btnCancel {
-  background-color: #7952b3;
+  background-color: var(--button-cancel-color);
 }
 
 #colCreateEdit {
