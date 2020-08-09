@@ -1,7 +1,7 @@
 <div id="rowTitle" class="row">
-    <h1>Listagem de pessoas</h1>
-    <a id="lkAddPerson" class="add-person defaultStylesForComponentWithIcon" [routerLink]="['/create']">
+    <a id="lkAddPerson" [routerLink]="['/create']" title="Nova pessoa">
         <fa-icon [icon]="faPlus"></fa-icon>
+        <label>Adicionar pessoa</label>
     </a>
 </div>
 <div id="rowTable" class="row">
@@ -50,10 +50,10 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Ações</th>
             <td mat-cell *matCellDef="let person">
-                <a id="lkEditPerson" class="action defaultStylesForComponentWithIcon" [routerLink]="['/edit', person.id]">
+                <a id="lkEditPerson" [routerLink]="['/edit', person.id]" title="Editar pessoa">
                     <fa-icon [icon]="faEdit"></fa-icon>
                 </a>
-                <button id="btnRemovePerson" class="action defaultStylesForComponentWithIcon" type="button" (click)="deletePerson(person.id)">
+                <button id="btnRemovePerson" type="button" (click)="deletePerson(person.id)" title="Remover pessoa">
           <fa-icon [icon]="faTrashAlt"> </fa-icon>
         </button>
             </td>
