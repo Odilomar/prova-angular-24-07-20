@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CreateeditComponent } from "./components/createedit/createedit.component";
+import { AuthGuardService } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: "edit/:id",
     component: CreateeditComponent,
+    canActivate: [AuthGuardService]
   },
 ];
 
