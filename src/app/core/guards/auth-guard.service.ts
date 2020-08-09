@@ -25,11 +25,17 @@ export class AuthGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): CanActivateType {
-    const { id } = route.params;
-    const isValid = this.personService.isPersonById(id);
+    let isValid = false;
 
-    if (!isValid) {
-      this.route.navigate(["dashboard"]);
+    if (route.params) {
+      const { id } = route.params;
+      isValid = this.personService.isPersonById(id);
+
+      if (!isValid) {
+        this.route.navigate(["dashboard"]);
+      } else {
+        this.route.navigate([`edit/${id}`]);
+      }
     }
 
     return isValid;
