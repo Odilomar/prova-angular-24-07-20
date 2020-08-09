@@ -1,4 +1,7 @@
-<div id="colCreateEdit" class="d-flex d-flex-col d-justify-center d-align-center">
+<div
+  id="colCreateEdit"
+  class="d-flex d-flex-col d-justify-center d-align-center"
+>
   <div class="loading" *ngIf="loading">Aguarde...</div>
   <div id="rowTitle" class="d-flex d-flex-row d-justify-start">
     <h1>{{ title }}</h1>
@@ -95,13 +98,18 @@
         />
       </mat-form-field>
       <div id="rowButtons" class="d-flex">
-        <button id="btnCancel" type="button" (click)="returnToDashboard()" title="Cancelar">
-            <fa-icon [icon]="faTimes"></fa-icon>
-            <label>Cancelar</label>
+        <button
+          id="btnCancel"
+          type="button"
+          (click)="returnToDashboard()"
+          title="Cancelar"
+        >
+          <fa-icon [icon]="faTimes"></fa-icon>
+          Cancelar
         </button>
-        <button id="btnSave" title="Salvar" (click)="save()">
-            <fa-icon [icon]="faSave"></fa-icon>
-            <label>Salvar</label>
+        <button id="btnSave" title="Salvar">
+          <fa-icon [icon]="faSave"></fa-icon>
+          Salvar
         </button>
       </div>
     </form>

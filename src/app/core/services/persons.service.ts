@@ -109,7 +109,7 @@ export class PersonsService {
     return person;
   }
 
-  public isPersonCPFRegistered(personCPF: string): boolean {
+  public isPersonRegisteredByCPF(personCPF: string): boolean {
     const persons = this.getAllPersons();
     const findPerson = persons.find((person) => person.cpf == personCPF);
 
@@ -171,8 +171,10 @@ export class PersonsService {
       this.showToastrService.showToastr(CPF_INVALID);
       return false;
     }
+    console.log("CPF CADASTRADO?", this.isPersonRegisteredByCPF(person.cpf));
+    console.log("Person CADASTRADO?", this.getPersonById(person.id));
 
-    if (this.isPersonCPFRegistered(person.cpf)) {
+    if (this.isPersonRegisteredByCPF(person.cpf) && !this.getPersonById(person.id)) {
       this.showToastrService.showToastr(CPF_REGISTERED);
       return false;
     }

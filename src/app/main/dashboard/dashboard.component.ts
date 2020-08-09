@@ -6,7 +6,7 @@ import { Person } from "src/app/core/interfaces/person.interface";
 import { PersonsService } from "src/app/core/services/persons.service";
 import { REMOVE_PERSON } from "src/app/core/constants/message.constants";
 import { ShowToastrService } from "src/app/core/services/showtoastr.service";
-import RemovePeopleComponent from "src/app/core/components/removepeople/removepeople.component";
+import { RemovePeopleComponent } from "src/app/core/components/removepeople/removepeople.component";
 
 import { faPlus, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
