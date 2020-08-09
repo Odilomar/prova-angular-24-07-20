@@ -1,91 +1,88 @@
 h1 {
-  font-family: "Montserrat", sans-serif;
-  color: white;
+    font-family: "Montserrat", sans-serif;
+    color: white;
 }
 
 form {
-  width: 100%;
+    width: 100%;
 }
 
 button {
-  width: 100%;
-  max-width: 8rem;
-
-  display: flex;
-  justify-content: space-around;
-
-  font-size: 1rem;
-
-  @media screen and (max-width: 425px) {
-    width: 6.25rem;
-    padding: .5rem;
-  }
+    width: 100%;
+    max-width: 8rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+    @media screen and (max-width: 425px) {
+        width: 6.25rem;
+        padding: .5rem;
+    }
 }
 
 mat-form-field {
-  display: block;
+    display: block;
 }
 
 mat-form-field.readonly {
-  color: grey;
+    color: grey;
 }
 
 .loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--loading-color);
-  z-index: 2;
-  color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--loading-color);
+    z-index: 2;
+    color: white;
 }
 
-.mat-form-field, .mat-input-element {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
+.mat-form-field,
+.mat-input-element {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
 }
 
 #rowTitle {
-  width: calc(75% + 2rem);
-  @media screen and (max-width: 1100px){
-    h1{
-      text-align: center;
+    width: calc(75% + 2rem);
+    @media screen and (max-width: 1100px) {
+        h1 {
+            text-align: center;
+        }
     }
-  }
 }
 
 #rowForm {
-  width: 75%;
-  max-width: 1300px;
-  padding: 0.75rem 1.5rem;
-  margin-top: 1rem;
-  border-radius: 0.25rem;
-  box-shadow: 2.5px 2.5px 2.5px var(--button-cancel-color);
+    width: 75%;
+    max-width: 1300px;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 2.5px 2.5px 2.5px var(--button-cancel-color);
 }
 
 #rowButtons {
-  display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 #btnSave {
-  background-color: var(--button-add-color);
-  &:hover{
-    background-color: var(--button-add-hover-color);
-  }
+    background-color: var(--button-add-color);
+    &:hover {
+        background-color: var(--button-add-hover-color);
+    }
 }
 
 #btnCancel {
-  background-color: var(--button-cancel-color);
-  &:hover{
-    background-color: var(--button-cancel-hover-color);
-  }
+    background-color: var(--button-cancel-color);
+    &:hover {
+        background-color: var(--button-cancel-hover-color);
+    }
 }
 
 #colCreateEdit {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }

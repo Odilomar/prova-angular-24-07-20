@@ -7,9 +7,8 @@ TODO:
 * Criar interface de Erro; - OK
 * Criar constante de Erros; - OK
 * Usar o toastr para enviar msg; - OK
+* Melhorar layout - Mobile First - OK;
 * Criar os testes;
-* Melhorar layout - Mobile First - OK
-    * Colocar onhover nos botões;
 
 Trata-se de um teste bem simples, onde temos um CRUD de usuários e queremos vê-lo funcional, organizado e com testes
 

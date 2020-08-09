@@ -1,10 +1,10 @@
-<div id="rowTitle" class="row">
+<div id="rowTitle" class="row d-flex d-flex-row d-justify-center d-align-center">
     <a id="lkAddPerson" [routerLink]="['/create']" title="Nova pessoa">
         <fa-icon [icon]="faPlus"></fa-icon>
         <label>Adicionar pessoa</label>
     </a>
 </div>
-<div id="rowTable" class="row">
+<div id="rowTable" class="row d-flex d-flex-row d-justify-center d-align-center bg-white">
     <table mat-table [dataSource]="persons">
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
         <tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
