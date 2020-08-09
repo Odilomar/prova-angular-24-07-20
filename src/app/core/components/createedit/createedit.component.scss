@@ -1,23 +1,28 @@
-.form {
-  margin-left: 10vw;
-  width: 80vw;
-  border: 1px solid grey;
-  margin-top: 50px;
-  padding: 16px;
+h1 {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+form {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  max-width: 8rem;
+
+  display: flex;
+  justify-content: space-around;
+
+  font-size: 1rem;
 }
 
 mat-form-field {
-  width: 100%;
+  display: block;
 }
 
 mat-form-field.readonly {
   color: grey;
-}
-
-#buttons {
-  margin-top: 16px;
-  display: flex;
-  justify-content: space-around;
 }
 
 .loading {
@@ -32,4 +37,39 @@ mat-form-field.readonly {
   align-items: center;
   background-color: rgba(212, 212, 212, 0.7);
   z-index: 2;
+}
+
+.mat-form-field, .mat-input-element {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+#rowTitle {
+  width: calc(75% + 2rem);
+}
+
+#rowForm {
+  width: 75%;
+  max-width: 1300px;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 2.5px 2.5px 2.5px #7952B3;
+}
+
+#rowButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#btnSave {
+  background-color: #40b35a;
+}
+
+#btnCancel {
+  background-color: #7952b3;
+}
+
+#colCreateEdit {
+  margin-bottom: 1.5rem;
 }

@@ -11,7 +11,7 @@ import { Person } from "../../interfaces/person.interface";
 import { MASK } from "../../constants/mask.constants";
 import { CepInterface } from "../../interfaces/cep.interface";
 import { CepErrorInterface } from "../../interfaces/cep.error.interface";
-import { ToastrService } from "ngx-toastr";
+import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import {
   CEP_NOT_FOUND,
@@ -32,7 +32,6 @@ import {
   SAVE_PERSON,
   EDIT_PERSON,
 } from "../../constants/message.constants";
-import { MessageInterface } from "../../interfaces/message.interface";
 import { ShowToastrService } from "../../services/showtoastr.service";
 
 @Component({
@@ -41,6 +40,10 @@ import { ShowToastrService } from "../../services/showtoastr.service";
   styleUrls: ["./createedit.component.scss"],
 })
 export class CreateeditComponent implements OnInit {
+  public title: string;
+  public faSave = faSave;
+  public faTimes = faTimes;
+
   public selectedPerson: Person;
   public loading: boolean;
 
@@ -70,6 +73,8 @@ export class CreateeditComponent implements OnInit {
       routeId == "" || !routeId
         ? this.personsService.getDefaultPerson()
         : this.personsService.getPersonById(routeId);
+    this.title =
+      routeId == "" || !routeId ? "Nova pessoa" : "Edição de dados cadastrais";
     this.loading = false;
   }
 

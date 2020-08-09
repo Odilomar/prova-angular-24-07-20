@@ -1,41 +1,109 @@
-<div class="loading" *ngIf="loading">Aguarde...</div>
-<div class="form">
+<div id="colCreateEdit" class="d-flex d-flex-col d-justify-center d-align-center">
+  <div class="loading" *ngIf="loading">Aguarde...</div>
+  <div id="rowTitle" class="d-flex d-flex-row d-justify-start">
+    <h1>{{ title }}</h1>
+  </div>
+  <div
+    id="rowForm"
+    class="d-flex d-flex-row bg-white d-justify-center d-align-center"
+  >
     <form (ngSubmit)="save()">
-        <mat-form-field>
-            <mat-label>Nome</mat-label>
-            <input matInput [(ngModel)]="selectedPerson.name" name="name" required />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>CPF</mat-label>
-            <input type="text" [mask]="cpfMask" [showMaskTyped]="true" matInput [(ngModel)]="selectedPerson.cpf" name="cpf" required />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Telefone</mat-label>
-            <input type="text" [mask]="phoneMask" [showMaskTyped]="true" matInput [(ngModel)]="selectedPerson.phone" name="phone" required />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput type="email" [(ngModel)]="selectedPerson.email" name="email" required />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>CEP</mat-label>
-            <input type="text" [mask]="cepMask" [showMaskTyped]="true" matInput [(ngModel)]="selectedPerson.cep" name="cep" (keyup)="changeCep($event)" required />
-        </mat-form-field>
-        <mat-form-field class="readonly">
-            <mat-label>Estado</mat-label>
-            <input matInput readonly [(ngModel)]="selectedPerson.state" name="state" required />
-        </mat-form-field>
-        <mat-form-field class="readonly">
-            <mat-label>Cidade</mat-label>
-            <input matInput readonly [(ngModel)]="selectedPerson.city" name="city" required />
-        </mat-form-field>
-        <mat-form-field class="readonly">
-            <mat-label>Rua</mat-label>
-            <input matInput readonly [(ngModel)]="selectedPerson.street" name="street" required />
-        </mat-form-field>
-        <div id="buttons">
-            <button type="button" (click)="returnToDashboard()">Cancelar</button>
-            <button>Salvar</button>
-        </div>
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          [(ngModel)]="selectedPerson.name"
+          name="name"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input
+          type="text"
+          [mask]="cpfMask"
+          [showMaskTyped]="true"
+          matInput
+          [(ngModel)]="selectedPerson.cpf"
+          name="cpf"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input
+          type="text"
+          [mask]="phoneMask"
+          [showMaskTyped]="true"
+          matInput
+          [(ngModel)]="selectedPerson.phone"
+          name="phone"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          [(ngModel)]="selectedPerson.email"
+          name="email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CEP</mat-label>
+        <input
+          type="text"
+          [mask]="cepMask"
+          [showMaskTyped]="true"
+          matInput
+          [(ngModel)]="selectedPerson.cep"
+          name="cep"
+          (keyup)="changeCep($event)"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="readonly">
+        <mat-label>Estado</mat-label>
+        <input
+          matInput
+          readonly
+          [(ngModel)]="selectedPerson.state"
+          name="state"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="readonly">
+        <mat-label>Cidade</mat-label>
+        <input
+          matInput
+          readonly
+          [(ngModel)]="selectedPerson.city"
+          name="city"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="readonly">
+        <mat-label>Rua</mat-label>
+        <input
+          matInput
+          readonly
+          [(ngModel)]="selectedPerson.street"
+          name="street"
+          required
+        />
+      </mat-form-field>
+      <div id="rowButtons">
+        <button id="btnCancel" type="button" (click)="returnToDashboard()" title="Cancelar">
+            <fa-icon [icon]="faTimes"></fa-icon>
+            <label>Cancelar</label>
+        </button>
+        <button id="btnSave" title="Salvar">
+            <fa-icon [icon]="faSave"></fa-icon>
+            <label>Salvar</label>
+        </button>
+      </div>
     </form>
+  </div>
 </div>

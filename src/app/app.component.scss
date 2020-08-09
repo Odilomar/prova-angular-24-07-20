@@ -1,19 +1,10 @@
 @import "~ngx-toastr/toastr";
-
-fa-icon {
-  height: 2rem;
-  width: auto;
-}
-
 .container {
-  width: calc(100% - 3rem);
-  height: calc(100% - 3rem);
-
-  max-width: 1300px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  padding: 1.5rem;
+    width: calc(100% - 3rem);
+    height: calc(100% - 3rem);
+    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem;
 }

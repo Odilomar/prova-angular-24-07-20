@@ -3,31 +3,6 @@ strong {
   width: 5rem;
 }
 
-button {
-  border-color: none;
-  border-style: none;
-}
-
-label {
-  cursor: pointer;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.d-flex-col {
-  flex-direction: column;
-}
-
-.d-flex-row {
-  flex-direction: row;
-}
-
-.d-justify-center {
-  justify-content: center;
-}
-
 .mat-dialog-actions {
   justify-content: space-between;
 }
