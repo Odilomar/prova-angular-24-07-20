@@ -4,7 +4,6 @@ import { PersonsService } from "./persons.service";
 import { Person } from "../interfaces/person.interface";
 
 import { v4 as uuidv4 } from "uuid";
-import { create } from "domain";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -89,6 +88,16 @@ describe("PersonsService", () => {
     personService.savePerson(person);
     expect(personService.getPersonById(id)).toEqual(person);
     personService.deletePersonById(id);
+  });
+
+  it("should not be able to create a person with the same cpf", () => {
+    const personService: PersonsService = TestBed.get(PersonsService);
+    personService.populateTable();
+    
+    const person = personService.getAllPersons()[0];
+    const id = uuidv4();
+    
+    expect(personService.savePerson({id, ...person})).toEqual(false);
   });
 
   it("should be able to delete a person", () => {
