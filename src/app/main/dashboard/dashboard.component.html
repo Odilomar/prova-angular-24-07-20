@@ -1,62 +1,86 @@
-<div id="rowTitle" class="row d-flex d-flex-row d-justify-center d-align-center">
-    <a id="lkAddPerson" [routerLink]="['/create']" title="Nova pessoa">
-        <fa-icon [icon]="faPlus"></fa-icon>
-        <label>Adicionar pessoa</label>
-    </a>
+<div
+  id="rowTitle"
+  class="row d-flex d-flex-row d-justify-center d-align-center"
+>
+  <a id="lkAddPerson" [routerLink]="['/create']" title="Nova pessoa">
+    <fa-icon [icon]="faPlus"></fa-icon>
+    <label>Adicionar pessoa</label>
+  </a>
 </div>
-<div id="rowTable" class="row d-flex d-flex-row d-justify-center d-align-center bg-white">
-    <table mat-table [dataSource]="persons">
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
-        1
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Nome</th>
-            <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-        </ng-container>
-        <ng-container matColumnDef="cpf">
-            <th mat-header-cell *matHeaderCellDef>CPF</th>
-            <td mat-cell *matCellDef="let person">
-                {{ person.cpf | mask: cpfMask }}
-            </td>
-        </ng-container>
-        <ng-container matColumnDef="phone">
-            <th mat-header-cell *matHeaderCellDef>Telefone</th>
-            <td mat-cell *matCellDef="let person">
-                {{ person.phone | mask: phoneMask }}
-            </td>
-        </ng-container>
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef>E-mail</th>
-            <td mat-cell *matCellDef="let person">{{ person.email }}</td>
-        </ng-container>
-        <ng-container matColumnDef="cep">
-            <th mat-header-cell *matHeaderCellDef>CEP</th>
-            <td mat-cell *matCellDef="let person">
-                {{ person.cep | mask: cepMask }}
-            </td>
-        </ng-container>
-        <ng-container matColumnDef="state">
-            <th mat-header-cell *matHeaderCellDef>Estado</th>
-            <td mat-cell *matCellDef="let person">{{ person.state }}</td>
-        </ng-container>
-        <ng-container matColumnDef="city">
-            <th mat-header-cell *matHeaderCellDef>Cidade</th>
-            <td mat-cell *matCellDef="let person">{{ person.city }}</td>
-        </ng-container>
-        <ng-container matColumnDef="street">
-            <th mat-header-cell *matHeaderCellDef>Rua</th>
-            <td mat-cell *matCellDef="let person">{{ person.street }}</td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>Ações</th>
-            <td mat-cell *matCellDef="let person">
-                <a id="lkEditPerson" [routerLink]="['/edit', person.id]" title="Editar pessoa">
-                    <fa-icon [icon]="faEdit"></fa-icon>
-                </a>
-                <button id="btnRemovePerson" type="button" (click)="deletePerson(person.id)" title="Remover pessoa">
+<div
+  id="rowTable"
+  class="row rowContent d-flex d-flex-row bg-white"
+  *ngIf="persons.length > 0; else showMessage"
+>
+  <table mat-table [dataSource]="persons">
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
+    1
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef>CPF</th>
+      <td mat-cell *matCellDef="let person">
+        {{ person.cpf | mask: cpfMask }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Telefone</th>
+      <td mat-cell *matCellDef="let person">
+        {{ person.phone | mask: phoneMask }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let person">{{ person.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="cep">
+      <th mat-header-cell *matHeaderCellDef>CEP</th>
+      <td mat-cell *matCellDef="let person">
+        {{ person.cep | mask: cepMask }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let person">{{ person.state }}</td>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>Cidade</th>
+      <td mat-cell *matCellDef="let person">{{ person.city }}</td>
+    </ng-container>
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef>Rua</th>
+      <td mat-cell *matCellDef="let person">{{ person.street }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let person">
+        <a
+          id="lkEditPerson"
+          [routerLink]="['/edit', person.id]"
+          title="Editar pessoa"
+        >
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </a>
+        <button
+          id="btnRemovePerson"
+          type="button"
+          (click)="deletePerson(person.id)"
+          title="Remover pessoa"
+        >
           <fa-icon [icon]="faTrashAlt"> </fa-icon>
         </button>
-            </td>
-        </ng-container>
-    </table>
+      </td>
+    </ng-container>
+  </table>
 </div>
+
+<ng-template #showMessage>
+  <div class="rowContent d-flex d-flex-row d-justify-center d-align-center bg-white">
+    <h1>
+      Não há pessoas cadastradas
+    </h1>
+  </div>
+</ng-template>
