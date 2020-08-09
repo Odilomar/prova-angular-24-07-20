@@ -74,10 +74,16 @@ mat-form-field.readonly {
 
 #btnSave {
   background-color: var(--button-add-color);
+  &:hover{
+    background-color: var(--button-add-hover-color);
+  }
 }
 
 #btnCancel {
   background-color: var(--button-cancel-color);
+  &:hover{
+    background-color: var(--button-cancel-hover-color);
+  }
 }
 
 #colCreateEdit {

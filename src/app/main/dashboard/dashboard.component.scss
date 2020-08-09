@@ -87,6 +87,9 @@ td button {
 #lkAddPerson {
     background-color: var(--button-add-color);
     padding: 0.5rem 2rem;
+    &:hover{
+        background-color: var(--button-add-hover-color);
+    }
 }
 
 #lkAddPerson label {
@@ -96,8 +99,14 @@ td button {
 
 #lkEditPerson {
     background-color: var(--button-edit-color);
+    &:hover{
+        background-color: var(--button-edit-hover-color);
+    }
 }
 
 #btnRemovePerson {
     background-color: var(--button-cancel-color);
+    &:hover{
+        background-color: var(--button-cancel-hover-color);
+    }
 }

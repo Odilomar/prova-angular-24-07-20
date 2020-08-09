@@ -12,11 +12,17 @@ strong {
   label {
     padding-left: 0.5rem;
   }
+  &:hover {
+    background-color: var(--button-cancel-hover-color);
+  }
 }
 
 #btnCloseDialog {
   background-color: var(--button-edit-color);
   label {
     padding-left: 0.5rem;
+  }
+  &:hover {
+    background-color: var(--button-edit-hover-color);
   }
 }
