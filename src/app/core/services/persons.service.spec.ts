@@ -73,7 +73,6 @@ describe("PersonsService", () => {
   });
 
   it("should be able to create a person", () => {
-    console.log("should be able to create a person");
     const personService: PersonsService = TestBed.get(PersonsService);
     const person = createPerson();
     const { id } = person;
@@ -82,7 +81,6 @@ describe("PersonsService", () => {
   });
 
   it("should be able to edit a person", () => {
-    console.log("should be able to edit a person");
     const personService: PersonsService = TestBed.get(PersonsService);
     const savedPerson = createPerson();
     const person: Person = { ...savedPerson, cpf: "78303355163" };
@@ -93,7 +91,6 @@ describe("PersonsService", () => {
   });
 
   it("should not be able to create a person with the same cpf", () => {
-    console.log("should not be able to create a person with the same cpf");
     const personService: PersonsService = TestBed.get(PersonsService);
     personService.populateTable();
 

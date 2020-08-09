@@ -171,8 +171,6 @@ export class PersonsService {
       this.showToastrService.showToastr(CPF_INVALID);
       return false;
     }
-    console.log("CPF CADASTRADO?", this.isPersonRegisteredByCPF(person.cpf));
-    console.log("Person CADASTRADO?", this.getPersonById(person.id));
 
     if (this.isPersonRegisteredByCPF(person.cpf) && !this.getPersonById(person.id)) {
       this.showToastrService.showToastr(CPF_REGISTERED);
