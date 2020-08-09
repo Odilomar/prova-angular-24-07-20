@@ -6,6 +6,7 @@ import {
   Router,
   UrlTree,
 } from "@angular/router";
+
 import { PersonsService } from "../services/persons.service";
 
 type CanActivateType =

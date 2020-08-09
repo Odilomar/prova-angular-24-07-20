@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Person } from "../interfaces/person.interface";
+
 import { v4 as uuidv4 } from "uuid";
+
+import { Person } from "../interfaces/person.interface";
 
 @Injectable({
   providedIn: "root",

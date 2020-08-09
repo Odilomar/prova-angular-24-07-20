@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import CreateEditComponent from "./components/createedit/createedit.component";
+
 import { AuthGuardService } from './guards/auth-guard.service';
+import CreateEditComponent from "./components/createedit/createedit.component";
 
 const routes: Routes = [
   {

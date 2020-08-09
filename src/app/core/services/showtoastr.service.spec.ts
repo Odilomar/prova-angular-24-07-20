@@ -1,7 +1,8 @@
 import { TestBed } from "@angular/core/testing";
 
+import { ToastrModule } from "ngx-toastr";
+
 import { ShowToastrService } from "./showtoastr.service";
-import { ToastrModule } from 'ngx-toastr';
 
 describe("ShowToastrService", () => {
   beforeEach(() =>

@@ -3,15 +3,16 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { isValid as isCPFValid } from "cpf";
 import { validate as isEmailValid } from "email-validator";
+import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import { PersonsService } from "../../services/persons.service";
 import { CepService } from "../../services/cep.service";
+import { PersonsService } from "../../services/persons.service";
 
 import { Person } from "../../interfaces/person.interface";
 import { MASK } from "../../constants/mask.constants";
+
 import { CepInterface } from "../../interfaces/cep.interface";
 import { CepErrorInterface } from "../../interfaces/cep.error.interface";
-import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import {
   CEP_NOT_FOUND,

@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment.prod";
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: "root",
 })
 export class CepService {
+  constructor(public http: HttpClient) {}
 
-	constructor(public http: HttpClient) { }
-
-	getCep(cep) {
-		return this.http.get(`https://viacep.com.br/ws/${Number(cep)}/json/`).toPromise();
-	}
+  getCep(cep) {
+    const { cepAPI } = environment;
+    return this.http.get(`${cepAPI}${Number(cep)}/json/`).toPromise();
+  }
 }

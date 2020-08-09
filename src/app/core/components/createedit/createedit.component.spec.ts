@@ -1,15 +1,16 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
-import CreateEditComponent from "./createedit.component";
-import { NgxMaskModule, IConfig } from "ngx-mask";
-import { CommonModule } from "@angular/common";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { MatDialogModule, MatInputModule } from "@angular/material";
-import { CoreRoutingModule } from "../../core-routing.module";
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { MatDialogModule, MatInputModule } from "@angular/material";
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { NgxMaskModule, IConfig } from "ngx-mask";
+import { ToastrModule } from 'ngx-toastr';
+
+import { CoreRoutingModule } from "../../core-routing.module";
+import CreateEditComponent from "./createedit.component";
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
