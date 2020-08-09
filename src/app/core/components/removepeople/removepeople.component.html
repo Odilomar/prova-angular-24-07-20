@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Remover pessoa</h1>
 <div mat-dialog-content>
     <h3>Você tem certeza que deseja remover essa pessoa?</h3>
-    <div class="d-flex d-flex-col d-justify-center">
+    <div class="d-flex d-flex-col d-justify-center" *ngIf="person">
         <div class="d-flex d-flex-row">
             <strong>Nome:</strong>
             <label>{{ person.name }}</label>

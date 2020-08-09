@@ -19,10 +19,10 @@ import { ToastrModule } from "ngx-toastr";
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    FormsModule,
     MatTableModule,
     HttpClientModule,
     MainModule,

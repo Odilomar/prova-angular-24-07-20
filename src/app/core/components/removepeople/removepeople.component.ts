@@ -11,7 +11,7 @@ import { faTrashAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
   templateUrl: "./removepeople.component.html",
   styleUrls: ["./removepeople.component.scss"],
 })
-export class RemovePeopleComponent implements OnInit {
+export default class RemovePeopleComponent implements OnInit {
   public faTrashAlt = faTrashAlt;
   public faTimes = faTimes;
 

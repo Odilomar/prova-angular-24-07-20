@@ -8,14 +8,14 @@ import { ShowToastrService } from "src/app/core/services/showtoastr.service";
 import { REMOVE_PERSON } from "src/app/core/constants/message.constants";
 
 import { faPlus, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { RemovePeopleComponent } from "src/app/core/components/removepeople/removepeople.component";
+import RemovePeopleComponent from "src/app/core/components/removepeople/removepeople.component";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
 })
-export class DashboardComponent implements OnInit {
+export default class DashboardComponent implements OnInit {
   public faPlus = faPlus;
   public faEdit = faEdit;
   public faTrashAlt = faTrashAlt;

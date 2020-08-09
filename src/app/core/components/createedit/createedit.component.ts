@@ -39,7 +39,7 @@ import { ShowToastrService } from "../../services/showtoastr.service";
   templateUrl: "./createedit.component.html",
   styleUrls: ["./createedit.component.scss"],
 })
-export class CreateeditComponent implements OnInit {
+export default class CreateEditComponent implements OnInit {
   public title: string;
   public faSave = faSave;
   public faTimes = faTimes;
