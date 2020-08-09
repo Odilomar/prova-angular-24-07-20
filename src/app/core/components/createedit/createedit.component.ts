@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { isValid as isCPFValid } from "cpf";
-import { validate as isEmailValid } from "email-validator";
 import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { CepService } from "../../services/cep.service";
@@ -13,27 +11,8 @@ import { MASK } from "../../constants/mask.constants";
 
 import { CepInterface } from "../../interfaces/cep.interface";
 import { CepErrorInterface } from "../../interfaces/cep.error.interface";
-
-import {
-  CEP_NOT_FOUND,
-  CEP_FOUND,
-  CEP_API_ERROR,
-  CEP_INVALID,
-  CEP_NOT_INFORMED,
-  NAME_NOT_FOUND,
-  CPF_NOT_FOUND,
-  CPF_INVALID,
-  PHONE_NOT_FOUND,
-  PHONE_INVALID,
-  EMAIL_NOT_FOUND,
-  EMAIL_INVALID,
-  STATE_NOT_FOUND,
-  CITY_NOT_FOUND,
-  STREET_NOT_FOUND,
-  SAVE_PERSON,
-  EDIT_PERSON,
-} from "../../constants/message.constants";
-import { ShowToastrService } from "../../services/showtoastr.service";
+import { EDIT_PERSON, SAVE_PERSON, CEP_API_ERROR, CEP_FOUND, CEP_NOT_FOUND } from '../../constants/message.constants';
+import { ShowToastrService } from '../../services/showtoastr.service';
 
 @Component({
   selector: "app-createedit",
@@ -119,14 +98,13 @@ export default class CreateEditComponent implements OnInit {
   }
 
   public save() {
-    if (this.validateForm()) {
+    if (this.personsService.savePerson(this.selectedPerson)) {
       this.showToastrService.showToastr(
         this.personsService.isPersonById(this.selectedPerson.id)
           ? EDIT_PERSON
           : SAVE_PERSON,
         false
       );
-      this.personsService.savePerson(this.selectedPerson);
       this.returnToDashboard();
     }
   }
@@ -139,86 +117,5 @@ export default class CreateEditComponent implements OnInit {
     this.selectedPerson.state = "";
     this.selectedPerson.city = "";
     this.selectedPerson.street = "";
-  }
-
-  private validateForm(): boolean {
-    if (this.selectedPerson.name == "") {
-      this.showToastrService.showToastr(NAME_NOT_FOUND);
-      return false;
-    }
-
-    if (
-      this.selectedPerson.cpf == "" ||
-      this.selectedPerson.cpf
-        .replace("_", "")
-        .replace(".", "")
-        .replace("-", "") == ""
-    ) {
-      this.showToastrService.showToastr(CPF_NOT_FOUND);
-      return false;
-    }
-
-    if (!isCPFValid(this.selectedPerson.cpf)) {
-      this.showToastrService.showToastr(CPF_INVALID);
-      return false;
-    }
-
-    if (
-      this.selectedPerson.phone == "" ||
-      this.selectedPerson.phone
-        .replace("(", "")
-        .replace("_", "")
-        .replace(")", "")
-        .replace(" ", "")
-        .replace("-", "") == ""
-    ) {
-      this.showToastrService.showToastr(PHONE_NOT_FOUND);
-      return false;
-    }
-
-    if (this.selectedPerson.phone.length < 10) {
-      this.showToastrService.showToastr(PHONE_INVALID);
-      return false;
-    }
-
-    if (this.selectedPerson.email == "") {
-      this.showToastrService.showToastr(EMAIL_NOT_FOUND);
-      return false;
-    }
-
-    if (!isEmailValid(this.selectedPerson.email)) {
-      this.showToastrService.showToastr(EMAIL_INVALID);
-      return false;
-    }
-
-    if (
-      this.selectedPerson.cep == "" ||
-      this.selectedPerson.cep.replace("_", "").replace("-", "") == ""
-    ) {
-      this.showToastrService.showToastr(CEP_NOT_INFORMED);
-      return false;
-    }
-
-    if (this.selectedPerson.cep.length < 8) {
-      this.showToastrService.showToastr(CEP_INVALID);
-      return false;
-    }
-
-    if (this.selectedPerson.state == "") {
-      this.showToastrService.showToastr(STATE_NOT_FOUND);
-      return false;
-    }
-
-    if (this.selectedPerson.city == "") {
-      this.showToastrService.showToastr(CITY_NOT_FOUND);
-      return false;
-    }
-
-    if (this.selectedPerson.street == "") {
-      this.showToastrService.showToastr(STREET_NOT_FOUND);
-      return false;
-    }
-
-    return true;
   }
 }

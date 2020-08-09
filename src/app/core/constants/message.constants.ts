@@ -39,6 +39,11 @@ export const CPF_INVALID: MessageInterface = {
   message: "Verifique-o e tente novamente!",
 };
 
+export const CPF_REGISTERED: MessageInterface = {
+  title: "CPF já cadastrado",
+  message: "Verifique-o e tente novamente!",
+};
+
 export const PHONE_NOT_FOUND: MessageInterface = {
   title: "Campo de Telefone não informado",
   message: "Informe-o e tente novamente!",

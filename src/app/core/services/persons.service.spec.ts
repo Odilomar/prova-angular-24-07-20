@@ -5,11 +5,17 @@ import { Person } from "../interfaces/person.interface";
 
 import { v4 as uuidv4 } from "uuid";
 import { create } from "domain";
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 type PersonWhitoutID = Omit<Person, "id">;
 
 describe("PersonsService", () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [ToastrModule.forRoot(), BrowserAnimationsModule],
+    })
+  );
 
   it("should be created", () => {
     const personService: PersonsService = TestBed.get(PersonsService);
@@ -72,6 +78,7 @@ describe("PersonsService", () => {
     const person = createPerson();
     const { id } = person;
     expect(personService.getPersonById(id)).toEqual(person);
+    personService.deletePersonById(id);
   });
 
   it("should be able to edit a person", () => {
@@ -81,10 +88,12 @@ describe("PersonsService", () => {
     const { id } = savedPerson;
     personService.savePerson(person);
     expect(personService.getPersonById(id)).toEqual(person);
+    personService.deletePersonById(id);
   });
 
   it("should be able to delete a person", () => {
     const personService: PersonsService = TestBed.get(PersonsService);
+    personService.populateTable();
     const { id } = createPerson();
     personService.deletePersonById(id);
     expect(personService.isPersonById(id)).toEqual(false);
@@ -97,14 +106,16 @@ describe("PersonsService", () => {
       name: "Raul César Drumond",
       cpf: "69599933699",
       phone: "82994940448",
-      email: "rrebecalouisealmeida@robertacorrea.com",
+      email: "rrebecalouisealmeida@gmail.com",
       cep: "57010788",
       city: "Maceió",
       state: "AL",
       street: "Rua N",
     };
 
-    personService.savePerson(person);
+    const isPersonCreated = personService.savePerson(person);
+
+    expect(isPersonCreated).toEqual(true);
 
     return person;
   }

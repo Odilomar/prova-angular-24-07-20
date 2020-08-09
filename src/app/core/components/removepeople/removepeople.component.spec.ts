@@ -8,6 +8,7 @@ import { NgxMaskModule, IConfig } from "ngx-mask";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import RemovePeopleComponent from "./removepeople.component";
+import { ToastrModule } from 'ngx-toastr';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -22,6 +23,7 @@ describe("RemovePeopleComponent", () => {
       declarations: [RemovePeopleComponent],
       imports: [
         NgxMaskModule.forRoot(maskConfig),
+        ToastrModule.forRoot(),
         CommonModule,
         FontAwesomeModule,
         MatDialogModule,

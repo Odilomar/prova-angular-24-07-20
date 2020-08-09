@@ -4,6 +4,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { AuthGuardService } from "./auth-guard.service";
 import { Router } from "@angular/router";
 import { PersonsService } from "../services/persons.service";
+import { ToastrModule } from 'ngx-toastr';
 
 describe("AuthGuardService", () => {
   let guard: AuthGuardService;
@@ -12,7 +13,7 @@ describe("AuthGuardService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [AuthGuardService, { provide: Router, useValue: routerMock }],
-      imports: [RouterTestingModule.withRoutes([])],
+      imports: [RouterTestingModule.withRoutes([]), ToastrModule.forRoot()],
     });
     guard = TestBed.get(AuthGuardService);
   });
