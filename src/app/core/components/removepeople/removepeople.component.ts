@@ -27,15 +27,19 @@ export default class RemovePeopleComponent implements OnInit {
   ngOnInit() {
     const { id } = this.data;
 
-    this.person = this.personService.getPersonById(id);
+    if (id) {
+      this.person = this.personService.getPersonById(id);
+    }
     this.data.isRemoved = false;
   }
 
-  public deletePerson(){
+  public deletePerson() {
     const { id } = this.data;
-
-    this.personService.deletePersonById(id);
-    this.data.isRemoved = true;
+    
+    if (id) {
+      this.personService.deletePersonById(id);
+      this.data.isRemoved = true;
+    }
 
     this.dialogRef.close(this.data.isRemoved);
   }

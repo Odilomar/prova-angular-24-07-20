@@ -1,15 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment.prod";
+import { CepInterface } from "../interfaces/cep.interface";
+import { CepErrorInterface } from "../interfaces/cep.error.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class CepService {
-  constructor(public http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  getCep(cep) {
+  getCep(cep: string): Promise<CepInterface | CepErrorInterface> {
     const { cepAPI } = environment;
-    return this.http.get(`${cepAPI}${Number(cep)}/json/`).toPromise();
+    return this.http
+      .get<CepInterface | CepErrorInterface>(`${cepAPI}${cep}/json/`)
+      .toPromise();
   }
 }
