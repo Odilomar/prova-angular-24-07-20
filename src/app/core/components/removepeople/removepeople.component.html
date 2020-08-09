@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Remover pessoa</h1>
+<div mat-dialog-content>
+    <h3>Você tem certeza que deseja remover essa pessoa?</h3>
+    <div class="d-flex d-flex-col d-justify-center">
+        <div class="d-flex d-flex-row">
+            <strong>Nome:</strong>
+            <label>{{ person.name }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>CPF:</strong>
+            <label>{{ person.cpf }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>Telefone:</strong>
+            <label>{{ person.phone }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>Email:</strong>
+            <label>{{ person.email }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>CEP:</strong>
+            <label>{{ person.cep }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>Estado:</strong>
+            <label>{{ person.state }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>Cidade:</strong>
+            <label>{{ person.city }}</label>
+        </div>
+        <div class="d-flex d-flex-row">
+            <strong>Rua:</strong>
+            <label>{{ person.street }}</label>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button id="btnCloseDialog" mat-button [mat-dialog-close]="data.isRemoved">
+      <fa-icon [icon]="faTimes"></fa-icon>
+      <label>Close</label>
+    </button>
+    <button id="btnRemovePerson" mat-button (click)="deletePerson()" cdkFocusInitial>
+      <fa-icon [icon]="faTrashAlt"></fa-icon>
+      <label>Remover</label>
+    </button>
+</div>

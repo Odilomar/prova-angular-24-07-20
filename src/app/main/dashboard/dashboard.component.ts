@@ -1,12 +1,14 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 
 import { PersonsService } from "src/app/core/services/persons.service";
 import { Person } from "src/app/core/interfaces/person.interface";
 import { MASK } from "../../core/constants/mask.constants";
 import { ShowToastrService } from "src/app/core/services/showtoastr.service";
-import { REMOVE_PERSON } from 'src/app/core/constants/message.constants';
+import { REMOVE_PERSON } from "src/app/core/constants/message.constants";
 
-import { faPlus, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { RemovePeopleComponent } from "src/app/core/components/removepeople/removepeople.component";
 
 @Component({
   selector: "app-dashboard",
@@ -37,7 +39,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private personsService: PersonsService,
-    private showToastrService: ShowToastrService
+    private showToastrService: ShowToastrService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -51,7 +54,15 @@ export class DashboardComponent implements OnInit {
   }
 
   deletePerson(personId: string) {
-    this.persons = this.personsService.deletePersonById(personId);
-    this.showToastrService.showToastr(REMOVE_PERSON, false);
+    const dialogRef = this.dialog.open(RemovePeopleComponent, {
+      data: { id: personId, isRemoved: false },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.showToastrService.showToastr(REMOVE_PERSON, false);
+        this.persons = this.personsService.getAllPersons();
+      }
+    });
   }
 }

@@ -1,0 +1,47 @@
+strong {
+  font-weight: bold;
+  width: 5rem;
+}
+
+button {
+  border-color: none;
+  border-style: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-flex-col {
+  flex-direction: column;
+}
+
+.d-flex-row {
+  flex-direction: row;
+}
+
+.d-justify-center {
+  justify-content: center;
+}
+
+.mat-dialog-actions {
+  justify-content: space-between;
+}
+
+#btnRemovePerson {
+  background-color: #7952b3;
+  label {
+    padding-left: 0.5rem;
+  }
+}
+
+#btnCloseDialog {
+  background-color: #bc8fff;
+  label {
+    padding-left: 0.5rem;
+  }
+}

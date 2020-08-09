@@ -446,13 +446,11 @@ export class PersonsService {
     return isPerson;
   }
 
-  public deletePersonById(personId: string): Person[] {
+  public deletePersonById(personId: string) {
     const persons = this.getAllPersons();
     const filteredPerson = persons.filter((person) => person.id != personId);
 
     this.savePersonsInLocalStorage(filteredPerson);
-
-    return filteredPerson;
   }
 
   public savePerson(person: Person) {
