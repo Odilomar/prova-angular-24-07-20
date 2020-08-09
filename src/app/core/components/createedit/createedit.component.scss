@@ -15,6 +15,11 @@ button {
   justify-content: space-around;
 
   font-size: 1rem;
+
+  @media screen and (max-width: 425px) {
+    width: 6.25rem;
+    padding: .5rem;
+  }
 }
 
 mat-form-field {
@@ -46,6 +51,11 @@ mat-form-field.readonly {
 
 #rowTitle {
   width: calc(75% + 2rem);
+  @media screen and (max-width: 1100px){
+    h1{
+      text-align: center;
+    }
+  }
 }
 
 #rowForm {
