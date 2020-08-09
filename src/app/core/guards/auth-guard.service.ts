@@ -33,9 +33,7 @@ export class AuthGuardService implements CanActivate {
 
       if (!isValid) {
         this.route.navigate(["dashboard"]);
-      } else {
-        this.route.navigate([`edit/${id}`]);
-      }
+      } 
     }
 
     return isValid;

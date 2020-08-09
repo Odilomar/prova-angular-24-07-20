@@ -36,6 +36,5 @@ describe("AuthGuardService", () => {
     const routeMock: any = { params: { id } };
 
     expect(guard.canActivate(routeMock, null)).toEqual(true);
-    expect(routerMock.navigate).toHaveBeenCalledWith([`edit/${id}`]);
   });
 });
